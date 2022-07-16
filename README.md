@@ -1,2 +1,3 @@
 # design-pattern
-Design pattern examples 
+Design pattern examples in java
+1. Singleton
