@@ -1,3 +1,3 @@
 # design-pattern
 Design pattern examples in java
-1. Singleton
+1. Strategy pattern
