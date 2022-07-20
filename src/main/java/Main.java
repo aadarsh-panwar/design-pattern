@@ -1,10 +1,30 @@
+import observer.*;
 import startegy.*;
 
 public class Main {
     public static void main(String ads[]) {
-       startegyTest();
+       observerTest();
     }
 
+    public static void observerTest() {
+        Weather weather = new Weather();
+        weather.setTemperature(10);
+        weather.setHumidity(20);
+        weather.setPressure(30);
+        WeatherData weatherData = new WeatherData();
+        WeatherStatisticDisplay statisticDisplay = new WeatherStatisticDisplay();
+        WeatherConditionDisplay conditionDisplay = new WeatherConditionDisplay();
+
+        weatherData.registerObserver(statisticDisplay);
+        weatherData.registerObserver(conditionDisplay);
+        weatherData.setWeather(weather);
+        weatherData.weatherChanged();
+        weatherData.removeObserver(conditionDisplay);
+        System.out.println("-------------");
+        weather.setTemperature(30);
+        weatherData.setWeather(weather);
+        weatherData.weatherChanged();
+    }
     public static void startegyTest() {
         Duck mallard = new Mallard();
         FlyBehaviour wingFly = new WingFlyBehaviour();
