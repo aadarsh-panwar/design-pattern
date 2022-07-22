@@ -1,9 +1,24 @@
+import decorator.*;
 import observer.*;
 import startegy.*;
 
 public class Main {
     public static void main(String ads[]) {
-       observerTest();
+        decoratorTest();
+    }
+
+    public static void decoratorTest() {
+        Beverage darkRoast = new DarkRoast();
+        System.out.println("Dark roast:"+ darkRoast.cost());
+        SoyFlavour soyFlavour = new SoyFlavour(darkRoast);
+        System.out.println("Dark roast with soy:"+ soyFlavour.cost());
+        System.out.println("Description:"+ soyFlavour.getDescription());
+        Beverage water = new Water();
+        System.out.println(water.getDescription());
+        LemonWater lemon = new LemonWater(water);
+
+        System.out.println(lemon.cost());
+        System.out.println(lemon.getDescription());
     }
 
     public static void observerTest() {
